@@ -1,4 +1,4 @@
-# Xet Issues Tracker
+# Xet Tools Issues Tracker
 
 Slow downloads? Unexpected glitches? Need more features? Generally confused? You've come to the right place!
 
