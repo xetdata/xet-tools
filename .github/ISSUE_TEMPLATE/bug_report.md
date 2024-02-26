@@ -31,7 +31,7 @@ If applicable, add screenshots to help explain your problem.
  - Device: [e.g., iPhone X, MacBook]
  - OS: [e.g., Debian 11.2, macOS 12.2]
  - Browser: [e.g. Chrome, Safari]
- - CLI version: [`xetcmd -V` output]
+ - CLI version: [`git xet -V` output]
 
 **Additional context**
 Add any other context about the problem here.
