@@ -11,5 +11,5 @@ Have thoughts that aren't ready for prime-time? [Contact us directly.](https://w
 For MacOS and most Linux systems where you have root access you can install git-xet with the following command.
 
 ```sh
-curl -sSf https://raw.githubusercontent.com/xetdata/xet-tools/main/install-git-xet.sh | sudo sh
+curl -sSf https://raw.githubusercontent.com/xetdata/xet-tools/main/install-git-xet.sh | sudo bash
 ```

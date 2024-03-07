@@ -1,11 +1,5 @@
 #! /bin/bash
 
-if which git-xet &> /dev/null ; then
-  echo "git-xet already installed, quitting"
-  exit 0
-fi
-
-
 OSTYPE=$( uname )
 
 function install () {
