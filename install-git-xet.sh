@@ -40,7 +40,7 @@ case "$ARCH" in
     ;;
   "arm64" | "aarch64")
     echo "installing for arm linux"
-    DIST="xet-linux-aarch64"
+    DIST="xet-linux-aarch_64"
     ;;
   *)
     echo "Unsupported architecture: $ARCH; please see available installation options at https://xethub.com/assets/docs/getting-started/install"
