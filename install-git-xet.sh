@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if which git-xet &> /dev/null ; then
+if command -v git-xet &> /dev/null ; then
   echo "git-xet already installed, quitting"
   exit 0
 fi
