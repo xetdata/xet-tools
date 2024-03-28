@@ -9,6 +9,7 @@ function install () {
   curl -L -o git-xet.tar.gz $URL
   tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
   rm git-xet.tar.gz
+  git xet install
   return $CODE
 }
 
