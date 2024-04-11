@@ -52,6 +52,9 @@ while getopts ":u:e:p:h" opt; do
   esac
 done
 
+echo "$username $email $token $host"
+
+
 if [[ $OSTYPE == "Darwin" ]]; then
   # install for macos
   echo "Installing git-xet for mac"
