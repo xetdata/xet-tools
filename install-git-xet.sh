@@ -22,9 +22,9 @@ function login() {
   echo "Authenticating with XetHub..."
   if [ $host ]
   then
-    git xet login -u $username -e $email -p $token --host $host --force; local CODE=$?
+    git xet login -u $username -e $email -p $token --host $host; local CODE=$?
   else
-    git xet login -u $username -e $email -p $token --force; local CODE=$?
+    git xet login -u $username -e $email -p $token ; local CODE=$?
   fi
   return $CODE
 }
