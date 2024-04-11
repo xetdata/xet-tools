@@ -19,7 +19,12 @@ function login() {
   local token=$3
   local host=$4
  
-  if [ $host ]
+  if [[ -z $username || -z $email || -z $token ]] 
+  then
+    return 0
+  fi
+
+  if [ -z $host ]
   then
     echo "Authenticating with ${host}..."
     git xet login -u $username -e $email -p $token --host $host; local CODE=$?
