@@ -30,7 +30,7 @@ function login() {
   return $CODE
 }
 
-while getopts ":u:e:p:h" opt; do
+while getopts ":u:e:p:h:" opt; do
   case $opt in
     u) username="$OPTARG"
     ;;
@@ -51,9 +51,6 @@ while getopts ":u:e:p:h" opt; do
     ;;
   esac
 done
-
-echo "$username $email $token $host"
-
 
 if [[ $OSTYPE == "Darwin" ]]; then
   # install for macos
