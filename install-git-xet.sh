@@ -13,11 +13,49 @@ function install () {
   return $CODE
 }
 
+function login() {
+  local username=$1
+  local email=$2
+  local token=$3
+  local host=$4
+ 
+  echo "Authenticating with XetHub..."
+  if [ $host ]
+  then
+    git xet login -u $username -e $email -p $token --host $host --force; local CODE=$?
+  else
+    git xet login -u $username -e $email -p $token --force; local CODE=$?
+  fi
+  return $CODE
+}
+
+while getopts ":u:e:p:h" opt; do
+  case $opt in
+    u) username="$OPTARG"
+    ;;
+    e) email="$OPTARG"
+    ;;
+    p) token="$OPTARG"
+    ;;
+    h) host="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    exit 1
+    ;;
+  esac
+
+  case $OPTARG in
+    -*) echo "Option $opt needs a valid argument"
+    exit 1
+    ;;
+  esac
+done
 
 if [[ $OSTYPE == "Darwin" ]]; then
   # install for macos
   echo "Installing git-xet for mac"
   install "xet-mac-universal"
+  login $username $email $token $host
   exit $?
 fi
 
@@ -41,5 +79,8 @@ case "$ARCH" in
     echo "Unsupported architecture: $ARCH; please see available installation options at https://xethub.com/assets/docs/getting-started/install"
 esac
 
+
 install $DIST
+login $username $email $token $host
+
 exit $?
