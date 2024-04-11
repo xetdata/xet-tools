@@ -19,11 +19,12 @@ function login() {
   local token=$3
   local host=$4
  
-  echo "Authenticating with XetHub..."
   if [ $host ]
   then
+    echo "Authenticating with ${host}..."
     git xet login -u $username -e $email -p $token --host $host; local CODE=$?
   else
+    echo "Authenticating with XetHub.com..."
     git xet login -u $username -e $email -p $token ; local CODE=$?
   fi
   return $CODE
