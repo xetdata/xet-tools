@@ -8,8 +8,12 @@ function install () {
   echo $URL
   curl -L -o git-xet.tar.gz $URL
   tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
+  if [ ${CODE} -ne 0 ]
+  then
+    exit ${CODE}
+  fi
   rm git-xet.tar.gz
-  git xet install
+  git xet install ; CODE=$?
   return $CODE
 }
 
@@ -30,7 +34,7 @@ function login() {
     git xet login -u $username -e $email -p $token ; local CODE=$?
   else
     echo "Authenticating with ${host}..."
-    git xet login -u $username -e $email -p $token --host $host; local CODE=$?
+    git xet login -u $username -e $email -p $token --host $host ; local CODE=$?
   fi
   return $CODE
 }
@@ -60,7 +64,12 @@ done
 if [[ $OSTYPE == "Darwin" ]]; then
   # install for macos
   echo "Installing git-xet for mac"
-  install "xet-mac-universal"
+  install "xet-mac-universal" ; CODE=$?
+  if [ ${CODE} -ne 0 ]
+  then
+    echo "Installation failed, skipping login"
+    exit ${CODE} 
+  fi
   login $username $email $token $host
   exit $?
 fi
@@ -85,6 +94,12 @@ case "$ARCH" in
     echo "Unsupported architecture: $ARCH; please see available installation options at https://xethub.com/assets/docs/getting-started/install"
 esac
 
+install $DIST ; CODE=$?
+if [ ${CODE} -ne 0 ]
+then
+  echo "Installation failed, skipping login"
+  exit ${CODE}
+fi
 
 install $DIST
 login $username $email $token $host
