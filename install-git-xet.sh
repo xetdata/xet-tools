@@ -31,10 +31,10 @@ function login() {
   if [ -z "$host" ]
   then
     echo "Authenticating with XetHub.com..."
-    sudo su -u $SUDO_USER git xet login -u $username -e $email -p $token ; local CODE=$?
+    sudo -u $SUDO_USER git xet login -u $username -e $email -p $token ; local CODE=$?
   else
     echo "Authenticating with ${host}..."
-    sudo su -u $SUDO_USER git xet login -u $username -e $email -p $token --host $host ; local CODE=$?
+    sudo -u $SUDO_USER git xet login -u $username -e $email -p $token --host $host ; local CODE=$?
   fi
   return $CODE
 }
