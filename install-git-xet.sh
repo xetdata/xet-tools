@@ -8,7 +8,7 @@ function install () {
   echo $URL
   curl -L -o git-xet.tar.gz $URL
   echo "Superuser permissions may be requested to complete installation."
-  sudo -u $SUDO_USER -- tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
+  sudo tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
   if [ ${CODE} -ne 0 ]
   then
     exit ${CODE}
@@ -32,10 +32,10 @@ function login() {
   if [ -z "$host" ]
   then
     echo "Authenticating with XetHub.com..."
-    sudo -u $SUDO_USER -- git xet login -u $username -e $email -p $token ; local CODE=$?
+    git xet login -u $username -e $email -p $token ; local CODE=$?
   else
     echo "Authenticating with ${host}..."
-    sudo -u $SUDO_USER -- git xet login -u $username -e $email -p $token --host $host ; local CODE=$?
+    git xet login -u $username -e $email -p $token --host $host ; local CODE=$?
   fi
   return $CODE
 }
