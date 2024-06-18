@@ -9,5 +9,5 @@ This repository captures [XetHub](https://xethub.com) issues. Have thoughts that
 For MacOS and most Linux systems where you have root access, you can install git-xet with the following command.
 
 ```sh
-curl -sSf https://xethub.com/install.sh | sudo bash
+curl -sSf https://xethub.com/install.sh | bash
 ```

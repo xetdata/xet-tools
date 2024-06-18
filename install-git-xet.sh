@@ -7,7 +7,8 @@ function install () {
   local URL="https://github.com/xetdata/xet-tools/releases/latest/download/${DIST}.tar.gz"
   echo $URL
   curl -L -o git-xet.tar.gz $URL
-  tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
+  echo "Superuser permissions may be requested to complete installation."
+  sudo -u $SUDO_USER -- tar -xzf git-xet.tar.gz -C /usr/local/bin/ ; local CODE=$?
   if [ ${CODE} -ne 0 ]
   then
     exit ${CODE}
